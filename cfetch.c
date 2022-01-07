@@ -219,12 +219,12 @@ int main(void)
 	info.memoryT = memoryT();
 	info.memoryU = memoryU();
 
-	add(&wb, info.name, strlen(info.name));
-	add(&wb, info.os, strlen(info.os));
-	add(&wb, info.kernel, strlen(info.kernel));
-	add(&wb, info.uptime, strlen(info.uptime));
-	add(&wb, info.shell, strlen(info.shell));
-	add(&wb, info.desktop, strlen(info.desktop));
+	addf(&wb, strlen(info.name) + 9, "\e[%dm%s\e[0m :: %s", colors.red, "Name", info.name);
+	addf(&wb, strlen(info.os) + 7, "\e[%dm%s\e[0m :: %s", colors.green, "OS", info.os);
+	addf(&wb, strlen(info.kernel) + 11, "\e[%dm%s\e[0m :: %s", colors.yellow, "Kernel", info.kernel);
+	addf(&wb, strlen(info.uptime) + 11, "\e[%dm%s\e[0m :: %s", colors.blue, "Uptime", info.uptime);
+	addf(&wb, strlen(info.shell) + 10, "\e[%dm%s\e[0m :: %s", colors.magenta, "Shell", info.shell);
+	addf(&wb, strlen(info.desktop) + 12, "\e[%dm%s\e[0m :: %s", colors.cyan, "Desktop", info.desktop);
 
 	write(STDOUT_FILENO, wb.b, wb.len);
 
