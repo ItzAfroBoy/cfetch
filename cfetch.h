@@ -50,7 +50,7 @@ enum colors
 	magenta,
 	cyan,
 	white,
-	gray = 90,
+	grey = 90,
 	blackBG = 40,
 	redBG,
 	greenBG,
@@ -59,7 +59,7 @@ enum colors
 	magentaBG,
 	cyanBG,
 	whiteBG,
-	grayBG = 100
+	greyBG = 100
 };
 
 void add(struct wbuf *wb, const char *s, int len);
