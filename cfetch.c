@@ -219,12 +219,12 @@ int main(void)
 	info.memoryT = memoryT();
 	info.memoryU = memoryU();
 
-	add(&wb, info.name, strlen(info.name));
-	add(&wb, info.os, strlen(info.os));
-	add(&wb, info.kernel, strlen(info.kernel));
-	add(&wb, info.uptime, strlen(info.uptime));
-	add(&wb, info.shell, strlen(info.shell));
-	add(&wb, info.desktop, strlen(info.desktop));
+	addf(&wb, strlen(info.name) + 30, "   \e[%dmName\e[0m \e[%dm=>\e[0m %s", red, grey, info.name);
+	addf(&wb, strlen(info.os) + 30, "     \e[%dmOS\e[0m \e[%dm=>\e[0m %s", green, grey, info.os);
+	addf(&wb, strlen(info.kernel) + 30, " \e[%dmKernel\e[0m \e[%dm=>\e[0m %s", yellow, grey, info.kernel);
+	addf(&wb, strlen(info.uptime) + 30, " \e[%dmUptime\e[0m \e[%dm=>\e[0m %s", blue, grey, info.uptime);
+	addf(&wb, strlen(info.shell) + 30, "  \e[%dmShell\e[0m \e[%dm=>\e[0m %s", magenta, grey, info.shell);
+	addf(&wb, strlen(info.desktop) + 30, "\e[%dmDesktop\e[0m \e[%dm=>\e[0m %s", cyan, grey, info.desktop);
 
 	write(STDOUT_FILENO, wb.b, wb.len);
 
