@@ -162,10 +162,8 @@ char *shell(void)
 	char *shell = getenv("SHELL");
 	char *buf = malloc((size_t) BUFSIZE);
 
-	for (int i = 0; i < 3; i++)
-		strsep(&shell, "/");
-
-	snprintf(buf, BUFSIZE, "%s\n", strsep(&shell, "\n"));
+	shell = basename(shell);
+	snprintf(buf, BUFSIZE, "%s\n", shell);
 
 	return buf;
 }
